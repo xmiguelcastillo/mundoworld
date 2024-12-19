@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Travel Search</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <style>
+            @font-face {
+              font-family: "DogicaPixel";
+              src: url("static/dogicapixel.ttf") format("truetype");
+            }
+            body {
+              margin: 0;
+              background: red;
+              color: white;
+              overflow-x: hidden;
+            }
+            .spacer {
+              width: 100%;
+              height: 100%;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+            }
+            .search-box {
+              border: 5px solid black;
+              border-radius: 7px;
+              background: #07bcd4;
+              display: flex;
+              flex-wrap: row; /* Allow wrapping of items */
+              padding: 15px;
+              margin-top: 10px;
+            }
+
+            .form-search-box {
+              border: 5px solid black;
+              border-radius: 7px;
+
+
+              background: #07bcd4;
+              display: flex;
+              flex-wrap: row; /* Allow wrapping of items */
+              padding: 15px;
+            }
+            .box-1 {
+              display: flex;
+              flex-direction: column;
+              width: calc(50% - 10px); /* Two boxes per row with some spacing */
+              margin-bottom: 10px; /* Space between rows */
+              margin-left: 3px;
+            }
+            .tag-from {
+              margin-bottom: 0.5rem;
+              font-weight: bold;
+              font-family: "DogicaPixel";
+              font-size: 15px; /* Smaller font size */
+              color: white;
+              text-align: center; /* Center the label text */
+              text-shadow:
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                /* Thicker black outline effect */ 0px -2px 0 #000,
+                -2px 0px 0 #000,
+                2px 0px 0 #000,
+                0px 2px 0 #000; /* Additional shadows for thickness */
+            }
+            .box-from {
+              height: 50px;
+              font-family: DogicaPixel;
+              border: 5px solid black;
+              border-radius: 5px;
+              background-color: white;
+              color: black; /* Input text color */
+              padding: 0 10px; /* Padding for text inside */
+              width: 90%; /* Full width of the parent */
+              box-sizing: border-box; /* Include padding and border in width */
+            }
+            .box-from::placeholder {
+              color: #aaa; /* Placeholder text color */
+            }
+            /* Media query for smaller screens */
+            @media (max-width: 600px) {
+              .box-1 {
+                width: 100%; /* Stack boxes on smaller screens */
+              }
+            }
+            /* Flatpickr custom styles */
+            .flatpickr-calendar {
+              background: #fff;
+              font-size: 10px;
+              color: black;
+              border: 3px solid black;
+              font-family: "DogicaPixel";
+            }
+
+            .button-box{
+              width: 100%;
+              height:100px ;
+              display: flex;
+              border: 2px solid blue;
+              align-content: center;
+              justify-content: center;
+
+            }
+                        button{
+                    background: #0275ff;
+                    width: 30%;
+                    margin-top: 20px;
+                    font-size: 50px;
+                    height:40px ;
+                    border: 5px solid black;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    font-family: "DogicaPixel";
+                    font-size: 15px;
+                    color: white;
+                    text-shadow:
+                    -2px -2px 0 #000,
+                     2px -2px 0 #000,
+                    -2px  2px 0 #000,
+                     2px  2px 0 #000,
+                     0px -2px 0 #000,
+                     -2px 0px 0 #000,
+                     2px 0px 0 #000,
+                     0px 2px 0 #000;
+            }
+
+             button:focus {
+                border-color: white;
+                outline: none;
+                m
+            }
+      .menu-box { width: 100%; height: 100px; display: flex; border: 2px solid blue;
+      align-content: center; justify-content: center;
+      }
+
+            .top-menu {
+              width: 90px;
+              background: #b0faff;
+              margin-left: 5px;
+              margin-right: 5px;
+              width: 20%;
+              margin-top: 20px;
+              font-size: 50px;
+              height: 40px;
+              border: 5px solid black;
+              border-radius: 5px;
+              font-weight: bold;
+              font-family: "DogicaPixel";
+              font-size: 15px;
+              color: white;
+              text-shadow:
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                0px -2px 0 #000,
+                -2px 0px 0 #000,
+                2px 0px 0 #000,
+                0px 2px 0 #000;
+            }
+    </style>
+  </head>
+  <body class="spacer">
+    <div class="spacer"></div>
+    <div class="menu-box">
+      <a href=" "
+        ><button class="top-menu" type="submit" class="sign-in">
+          Flights
+        </button></a
+      >
+      <button class="top-menu" type="submit" class="sign-in">Home</button>
+      <button class="top-menu" type="submit" class="sign-in">Profile</button>
+      <button class="top-menu" type="submit" class="sign-in">Sign in</button>
+    </div>
+
+    <section>
+      <form id="form-search-box" method="POST">
+        {% csrf_token %}
+         <!-- <div class="search-box"> -->
+    <!--   <div class="box-1"> -->
+    <!--     <div class="tag-from">First Name</div> -->
+    <!--     <input -->
+    <!--       type="text" -->
+    <!--       name="first_name" -->
+    <!--       class="box-from" -->
+    <!--       placeholder="Enter your first name" -->
+    <!--       required -->
+    <!--     /> -->
+    <!--      <div class="button-box"> -->
+    <!-- </div> -->
+    <!--   </div> -->
+            <!---->
+            <!-- "flight_id", -->
+            <!-- "airline_id", -->
+            <!-- "departure_city", -->
+            <!-- "arrival_city", -->
+            <!-- "departure_date", -->
+            <!-- "return_date", -->
+            <!-- "class_id", -->
+            <!-- "price",  # Include price if needed -->
+        <div class="search-box">
+          <div class="box-1">
+            <div class="tag-from">Departure</div>
+            <input
+              type="text"
+              name="departure_city"
+              class="box-from"
+              placeholder="Enter departure city"
+              required
+            />
+          </div>
+        <div class="box-1">
+          <div class="tag-from">Destination</div>
+          <input
+            type="arrival_city"
+            class="box-from"
+            placeholder="Enter destination city"
+          />
+        </div>
+        <div class="box-1">
+          <div class="tag-from">Leaving</div>
+          <input
+            type="text"
+            id="departure-date"
+            class="box-from"
+            placeholder="Leaving date"
+            readonly
+          />
+        </div>
+        <div class="box-1">
+          <div class="tag-from">Return</div>
+          <input
+            type="text"
+            id="return-date"
+            class="box-from"
+            placeholder="Return date"
+            readonly
+          />
+        </div>
+        <div class="box-1">
+            <div class="tag-from">Class</div>
+            <select id = "class_id"name="class_id" class="box-from">   
+
+                <option value="economy">Economy Class Flights</option>
+                <option value="premium-economy">Premium Economy Class Flights</option>
+                <option value="business">Business Class Flights</option>
+                <option value="first-class">First Class Flights</option>
+            </select>
+
+        </div>
+
+                      <button type="submit" class="sign-in">Search</button>
+      </form>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      flatpickr("#departure-date", {
+        dateFormat: "Y-m-d",
+        minDate: "today", // Disable past dates
+      });
+
+      flatpickr("#return-date", {
+        dateFormat: "Y-m-d",
+        minDate: "today", // Disable past dates
+      });
+    </script>
+  </body>
+</html>
+

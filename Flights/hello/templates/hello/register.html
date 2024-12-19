@@ -1,0 +1,257 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body></body>
+</html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> </title>
+    <style>
+                  @font-face {
+                      font-family: "DogicaPixel";
+                    src: url("static/dogicapixel.ttf") format("truetype");
+                    font-weight: normal;
+                    font-style: normal;
+                  }
+                  .spacer {
+                    aspect-ration: 900/900;
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                  }
+                  .item {
+                    aspect-ration: 100/100;
+                    <!-- border: 2px solid red; -->
+                    color: black;
+                    width: 300px;
+                    height: 300px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                  }
+
+                  .item2 {
+                    aspect-ration: 200/200;
+                    <!-- border: 2px solid red; -->
+                    color: black;
+                    width: 500px;
+                    height: 250px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                  }
+                  .layer1 {
+                    background-image: url("static/sky2.svg");
+                  }
+
+                  .layer2 {
+                    background-image: url("earth-pixel.svg");
+                  }
+                  .layer3 {
+                    background-image:  url("static/login-title.svg");
+
+                  }
+                  body {
+                    margin: 0;
+                    background: #202731;
+                    color: white;
+                    overflow-x: hidden;
+                  }
+                  section {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 100px 20vw;
+                  }
+                  h1 {
+                    border: 2px solid red;
+                  }
+                  p {
+                    border: 2px solid red;
+                  }
+                  .container {
+                    display: flex;
+                    flex-direction: column; /* Stack items vertically */
+                    align-items: center; /* Center items horizontally */
+                    justify-content: center; /* Center items vertically */
+                    height: 400px;
+                    width: 300px;
+                    border: 7px solid black;
+                    background: #04c5e0;
+                    border-radius: 5px;
+                  }
+                  .form-group {
+                    margin-bottom: 1rem; /* Space between form groups */
+                    text-align: center; /* Center text */
+                  }
+
+
+            .form-group label {
+                display: block; /* Makes the label take up the full width */
+                margin-bottom: 0.5rem; /* Space between label and input */
+                font-weight: bold; /* Makes the label bold */
+                font-family: "DogicaPixel"; /* Custom font */
+                font-size: 15px; /* Set font size */
+                color: white; /* Main text color */
+                text-shadow:
+                    -2px -2px 0 #000,
+                     2px -2px 0 #000,
+                    -2px  2px 0 #000,
+                     2px  2px 0 #000, /* Thicker black outline effect */
+                     0px -2px 0 #000,
+                     -2px 0px 0 #000,
+                     2px 0px 0 #000,
+                     0px 2px 0 #000; /* Additional shadows for thickness */
+            }
+                  .form-group input {
+                   font-family: "DogicaPixel"; /* Custom font */
+                font-size: 10px; /* Font size */
+                font-weight: normal; /* Adjust weight as needed */
+                color: #333; /* Text color */
+                padding: 10px; /* Padding inside the input */
+                border: 5px solid black; /* Border color and thickness */
+                border-radius: 5px; /* Rounded corners */
+                width: 70%; /* Full width */
+                height: 30px; /* Full width */
+                box-sizing: border-box; /* Includes padding in width */
+                background-color: #fff; /* Background color */
+                transition: border-color 0.3s; /* Smooth transi/* Ensure padding is included in width */
+                  }
+                  .form-group input:focus {
+                border-color: black; /* Change border color on focus */
+                font-size: 10px; /* Font size */
+                outline: none; /* Remove default outline */
+            }
+
+                  button{
+                    background: #26ff00;
+                    width: 50%;
+                    font-size: 50px;
+                    height:40px ;
+                     border: 5px solid black; /* Border color and thickness */
+                    border-radius: 5px; /* Rounded corners */
+                   font-weight: bold; /* Makes the label bold */
+                font-family: "DogicaPixel"; /* Custom font */
+                font-size: 15px; /* Set font size */
+                color: white; /* Main text color */
+                text-shadow:
+                    -2px -2px 0 #000,
+                     2px -2px 0 #000,
+                    -2px  2px 0 #000,
+                     2px  2px 0 #000, /* Thicker black outline effect */
+                     0px -2px 0 #000,
+                     -2px 0px 0 #000,
+                     2px 0px 0 #000,
+                     0px 2px 0 #000; /* Additional shadows for thickness */
+            }
+
+             button:focus {
+                border-color: black; /* Change border color on focus */
+                outline: none; /* Remove default outline */
+            }
+
+
+            .sign-in{
+            background: #0275ff;
+            width: 200px;
+            margin-top: 30px;
+            height: 50px;
+            font-size: 20px;
+            }
+
+                   .menu-box {
+               width: 100%; height: 100px; display: flex;
+               align-content: center; justify-content: center;
+      }
+
+            .top-menu {
+              width: 90px;
+              background: #b0faff;
+              margin-left: 5px;
+              margin-right: 5px;
+              width: 15%;
+              margin-top: 20px;
+              font-size: 50px;
+              height: 40px;
+              border: 5px solid black;
+              border-radius: 5px;
+              font-weight: bold;
+              font-family: "DogicaPixel";
+              font-size: 15px;
+              color: white;
+              text-shadow:
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                0px -2px 0 #000,
+                -2px 0px 0 #000,
+                2px 0px 0 #000,
+                0px 2px 0 #000;
+            }
+            a{
+              color: white;
+            }
+    </style>
+  </head>
+  <body class="spacer layer1">
+    <div class="menu-box">
+      <button class="top-menu" type="submit" class="sign-in">
+        <a href="/hello">Home</a>
+      </button>
+      <button class="top-menu" type="submit" class="sign-in">Flights</button>
+      <button class="top-menu" type="submit" class="sign-in">Register</button>
+      <button class="top-menu" type="submit" class="sign-in">
+        <a href="login">Sign in</a>
+      </button>
+    </div>
+
+    <section>
+      <div class="layer3 item2"></div>
+      <div class="container">
+        <form id="login-form" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <!-- <input type="text" id="first-name" name="first-name" required /> -->
+            {{form.first_name}}
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <!-- <input type="text" id="last-name" name="last-name" required /> -->
+            {{form.last_name}}
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <!-- <input type="email" id="email" name="email" required /> -->
+            {{form.email}}
+          </div>
+          <div class="form-group">
+            <label for="password">Username</label>
+            <!-- <input type="password" id="password" name="password" required /> -->
+            {{form.username}}
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <!-- <input type="password" id="password" name="password" required /> -->
+            {{form.password1}} {{form.password2}}
+          </div>
+          <button type="submit" class="create-button">Create</button>
+        </form>
+      </div>
+      {{form.errors}}
+      <a href="loginPage">
+        <button type="submit" class="sign-in">Sign in</button>
+      </a>
+    </section>
+  </body>
+</html>

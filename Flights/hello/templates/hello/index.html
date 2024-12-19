@@ -1,0 +1,509 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Travel Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet" />
+    <style>
+      @font-face {
+        font-family: "DogicaPixel";
+        src: url("/static/dogicapixel.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      .spacer {
+        aspect-ratio: 900/900;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .item {
+        aspect-ratio: 1/1;
+        color: black;
+        width: 300px;
+        height: 300px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin-bottom:60px;
+      }
+      .item2 {
+        aspect-ratio: 2/1;
+        color: black;
+        width: 500px;
+        height: 150px;
+        margin-top:-60px;
+        margin-bottom:60px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .layer1 {
+        background-image: url("/static/sky2.svg");
+      }
+      .layer2 {
+        background-image: url("/static/earth-pixel.svg");
+      }
+      .item3 {
+        aspect-ratio: 1/1;
+        color: black;
+        width: 100px;
+        height: 150px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .travel-pictures {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        padding: 100px 20vw;
+      }
+      .travel-pictures-row {
+        display: flex;
+        flex-direction: row;
+      }
+      .layer3 {
+        background-image: url("/static/title.svg");
+      }
+      .layer4 {
+        background-image: url("/static/newyork-pixel.svg");
+        width: 50%;
+      }
+      
+body {
+    margin: 0;
+    background-image: url("/static/sky2.svg"); /* Ensure the correct path */
+    background-size: cover; /* Cover the entire viewport */
+    background-repeat: no-repeat; /* Prevent repeating */
+    background-position: center; /* Center the background image */
+    background:#0044a9;
+    color: #0044a9;
+    overflow-x: hidden;
+}
+      section {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 100px 20vw;
+      }
+      h1, p {
+        border: 2px solid red;
+      }
+      .flip {
+        transform: rotate(180deg);
+      }
+      .search-box {
+        border: 5px solid black;
+        border-radius: 7px;
+        background: #07bcd4;
+        display: flex;
+        flex-wrap: row; /* Allow wrapping of items */
+        padding: 15px;
+        gap: 10px; /* Adjust the gap as needed */
+      }
+      .box-1 {
+        display: flex;
+        flex-direction: column;
+        width: calc(50% - 10px); /* Two boxes per row with some spacing */
+      }
+      .tag-from {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        font-family: "DogicaPixel";
+        font-size: 15px; /* Smaller font size */
+        color: white;
+        text-align: center; /* Center the label text */
+       text-shadow:
+          -2px -2px 0 #000,
+          2px -2px 0 #000,
+          -2px 2px 0 #000,
+          2px 2px 0 #000;
+      }
+      .box-from {
+        height: 40px;
+        font-family: DogicaPixel;
+        border: 5px solid black;
+        border-radius: 5px;
+        background-color: white;
+        color: black; /* Input text color */
+        padding: 0 10px; /* Padding for text inside */
+        width: 100%; /* Full width of the parent */
+        box-sizing: border-box; /* Include padding and border in width */
+      }
+      .box-from::placeholder {
+        color: #aaa; /* Placeholder text color */
+      }
+      /* Media query for smaller screens */
+      @media (max-width: 600px) {
+        .box-1 {
+          width: 100%; /* Stack boxes on smaller screens */
+        }
+      }
+      /* Flatpickr custom styles */
+      .flatpickr-calendar {
+        background: #fff;
+        font-size: 10px;
+        color: black;
+        border: 3px solid black;
+        font-family: "DogicaPixel";
+      }
+      .image-gallery {
+        padding: 20px; /* Padding around the grid */
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 10px; /* Space between images */
+        width: 100%; /* Responsive width */
+        max-width: 1000px; /* Max width */
+        margin-top:300px;
+        margin-bottom:60px;
+      }
+      .image-box {
+        position: relative;
+        overflow: hidden; /* Hide any overflow */
+        border-radius: 5px; /* Rounded corners */
+      }
+      .image-box img {
+        width: 100%; /* Ensure the image fills the box */
+        height: auto; /* Maintain aspect ratio */
+        display: block; /* Remove bottom space in images */
+      }
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around; /* Space out the columns evenly */
+        width: 100%;
+        max-width: 1200px; /* Limit max width */
+        border: 5px solid black;
+        border-radius: 5px; /* Changed to single radius */
+  margin-bottom:-90px;
+      }
+      .button-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center items horizontally */
+        background: #378ac5;
+        border-radius: 0px;
+        padding: 20px;
+        width: 30%; /* Adjust as needed */
+      }
+      .button-label {
+        margin-bottom: 10px; /* Space between label and buttons */
+        font-family: "DogicaPixel";
+        font-size: 15px;
+        color: white;
+        text-align: center;
+        text-shadow:
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          1px 1px 0 #000;
+      }
+      .styled-button {
+        background: white;
+        width: 80%; /* Button width */
+        font-size: 15px;
+        height: 40px;
+        border: 5px solid black; /* Border color and thickness */
+        border-radius: 5px; /* Rounded corners */
+        margin: 5px 0; /* Space between buttons */
+        font-weight: bold;
+        font-family: "DogicaPixel";
+        color: White; /* Text color */
+         
+        text-shadow:
+              -2px -2px 0 #000,
+               2px -2px 0 #000,
+              -2px  2px 0 #000,
+               2px  2px 0 #000, /* Thicker black outline effect */
+               0px -2px 0 #000,
+               -2px 0px 0 #000,
+               2px 0px 0 #000,
+               0px 2px 0 #000; /* Ad
+      }
+      .styled-button:focus {
+        border-color: black; /* Change border color on focus */
+        outline: none; /* Remove default outline */
+      }
+.box-from {
+  height: 40px; /* Adjust height as needed */
+  font-family: DogicaPixel;
+  border: 5px solid black;
+  border-radius: 5px;
+  background-color: white;
+  color: black; /* Input text color */
+  padding: 0 10px; /* Padding for text inside */
+  width: 100%; /* Full width of the parent */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+.button-box{
+        width: 100%;
+        height:100px ;
+        display: flex;
+        <!-- border: 2px solid blue; -->
+        align-content: center;
+        justify-content: center;
+
+      }
+button{
+              background: #0275ff;
+              width: 20%;
+              margin-top: 20px;
+              font-size: 50px;
+              height:50px ;
+              border: 5px solid black; 
+              border-radius: 5px; 
+              font-weight: bold; 
+              font-family: "DogicaPixel"; 
+              font-size: 15px; 
+              color: white; 
+              text-shadow:
+              -2px -2px 0 #000,
+               2px -2px 0 #000,
+              -2px  2px 0 #000,
+               2px  2px 0 #000, 
+               0px -2px 0 #000,
+               -2px 0px 0 #000,
+               2px 0px 0 #000,
+               0px 2px 0 #000; 
+        margin-top:60px;
+      }
+
+       button:focus {
+          border-color: white; 
+          outline: none; 
+      }
+
+
+       .menu-box { 
+         width: 100%; height: 100px; display: flex; 
+         align-content: center; justify-content: center;
+}
+
+      .top-menu {
+        width: 90px;
+        background: #b0faff;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 15%;
+        margin-top: 20px;
+        font-size: 50px;
+        height: 40px;
+        border: 5px solid black;
+        border-radius: 5px;
+        font-weight: bold;
+        font-family: "DogicaPixel";
+        font-size: 15px;
+        color: white;
+        text-shadow:
+          -2px -2px 0 #000,
+          2px -2px 0 #000,
+          -2px 2px 0 #000,
+          2px 2px 0 #000,
+          0px -2px 0 #000,
+          -2px 0px 0 #000,
+          2px 0px 0 #000,
+          0px 2px 0 #000;
+      }
+
+      a{
+        color: white;
+      
+      }
+
+     </style>
+            
+  </head>
+
+  <body>
+
+     <div class="menu-box" >
+     <button class="top-menu" type="submit" class="sign-in">Flights</button>
+      <button class="top-menu" type="submit" class="sign-in">Home</button>
+      <button class="top-menu" type="submit" class="sign-in">
+        <a href="/hello/register">Register</a>
+      </button>
+      <button class="top-menu" type="submit" class="sign-in">
+        <a href="loginPage">Sign in</a>
+      </button>
+      <button class="top-menu" type="submit" class="sign-in">Hello, {{request.user}}</button>
+      <a href="{% url 'logoutPage' %}" class="top-menu sign-in">Logout</a>
+
+    </div>
+
+
+    <section class="">
+
+ 
+
+      
+    </div>
+      <div class="layer3 item2"></div>
+      <div class="layer2 item"></div>
+
+
+
+
+
+
+
+         
+<div class="search-box">
+    <form method="POST">
+        <div class="box-1">
+            <div class="tag-from">Departure</div>
+            <input
+                type="text"
+                name="departure_city"
+                class="box-from"
+                placeholder="Enter departure city"
+                required
+            />
+        </div>
+        <div class="box-1">
+            <div class="tag-from">Destination</div>
+            <input
+                type="text"
+                name="arrival_city"
+                class="box-from"
+                placeholder="Enter destination city"
+                required
+            />
+        </div>
+        <div class="box-1">
+            <div class="tag-from">Leaving</div>
+            <input
+                type="date"
+                name="departure_date"
+                class="box-from"
+                placeholder="Leaving date"
+                required
+            />
+        </div>
+        <div class="box-1">
+            <div class="tag-from">Return</div>
+            <input
+                type="date"
+                name="return_date"
+                class="box-from"
+                placeholder="Return date"
+            />
+        </div>
+        <div class="box-1">
+            <div class="tag-from">Class</div>
+            <select name="class_id" class="box-from">
+                <option value="">All Classes</option>
+                <option value="economy">Economy Class Flights</option>
+                <option value="premium">Premium Economy Class Flights</option>
+                <option value="business">Business Class Flights</option>
+                <option value="first">First Class Flights</option>
+            </select>
+        </div>
+        <div class="button-box">
+            <button type="submit" class="sign-in">Find</button>
+        </div>
+    </form>
+</div>
+
+    <div class="results">
+        <h2>Available Flights</h2>
+        <ul>
+        </ul>
+    </div>
+
+
+
+
+
+                 <div class="image-gallery">
+      <div class="grid-container">
+        <div class="image-box">
+          <img src="static/vegas-pixel.svg" alt="Las Vegas" />
+        </div>
+        <div class="image-box">
+          <img src="static/newyork-pixel.svg" alt="New York" />
+        </div>
+        <div class="image-box">
+          <img src="static/maimi-pixel.svg" alt="Miami" />
+        </div>
+        <div class="image-box">
+          <img src="static/houston-pixel.svg" alt="Houston" />
+        </div>
+      </div>
+
+
+
+
+       <div class="button-container">
+
+         <div class="button-section">
+          <div class="button-label">Our Products</div>
+          <button type="submit" class="styled-button">Flights</button>
+          <button type="submit" class="styled-button">Profile</button>
+          <a href="/hello/login"><button type="submit" class="styled-button">
+<a href="loginPage">Sign in</a>
+              </button></a> 
+        </div>
+
+        <div class="button-section">
+          <div class="button-label">Connect</div>
+          <button type="submit" class="styled-button">Me</button>
+          <button type="submit" class="styled-button">Github</button>
+          <button type="submit" class="styled-button">LinkedIn</button>
+          <button type="submit" class="styled-button">Email</button>
+        </div>
+
+        <div class="button-section">
+          <div class="button-label">Other Websites</div>
+          <button type="submit" class="styled-button">None</button>
+          <button type="submit" class="styled-button">None</button>
+          <button type="submit" class="styled-button">None</button>
+        </div>
+
+
+
+      </div>
+
+
+
+
+    </section>
+     
+     
+
+
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      flatpickr("#departure-date", {
+    dateFormat: "Y-m-d",
+    minDate: "today", // Disable past dates
+    position: "below",
+    onChange: function(selectedDates) {
+      // Set the minDate for return date based on selected departure date
+      returnDatePicker.set('minDate', selectedDates[0]);
+    }
+  });
+      flatpickr("#return-date", {
+    dateFormat: "Y-m-d",
+    minDate: "today", // Disable past dates
+    position: "below",
+  });
+      
+    </script>
+
+  </body>
+    
+</html>
+
+<!doctype html>
+

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> </title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    test
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="text" name="flight_number" />
+      <input type="text" name="number_of_seats" />
+      <input type="text" name="operating_days" />
+      <input type="text" name="domestic_inernational" />
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </body>
+</html>
